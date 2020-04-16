@@ -1,38 +1,47 @@
-# go-filecoin-storage-helper
+# filecoin-storage-helper
 
-### Storage workflow
+> An Storage Tool For Filecoin
 
-We think the keypoint is that client must pay for the metadata, the metadata is used for data retrieval,We'll store the metadata by leveldb, Each upload action will use a separate db.
+⚠️ WARNING: Filecoin is under heavy development and breaking changes are highly likely between versions. This library is experimental, It may be broken in part or in entirety.
 
-
-
-![](/picture/storage-workflow.jpeg)
-
-- Step1
-  - Input: User data
-  - Output: DB of user data's metadata 
-  - Workflow:
-    - Record the directory tree to the db(leveldb) through storage helper, including the chunk size, type(the metadata if from user data or db), file path/size.
-    - import or make a deal on filecoin
-    - get the result from go-filecoin, including the CID of piece and the deal status
-    - Record the CID of piece and deal status into db, record  the CID relationship to the original file(file that belongs to,and chunk's seq)
-- Step2
-  - Input: DB of userdata's metadata
-  - Output: DB of DB's metadata
-  - Workflow:
-    - if the DB of userdata's metadata is great than a sector size,  like as step 1, Think of the DB as a file. split the DB to many chunks.
-- Step 3
-  - Repeat the step2 until the DB's size is less than a sector size.then import the DB, the CID is the finally result.
+🧩 Filecoin version: **lotus 0.2.7**
 
 
 
-## Retrieval workflow
+## Table of Contents
 
-- step1
-  - Get the DB through a CID
-- step2
-  - Get the userdata's metadata that including file path and their CID
-- step3
-  - Get the file chunk through its CID
-- step4
-  - Compose the original user data through the file chunks
+- [What is Filecoin StorageHelper](#what is filecoin storagehelper)
+- [Install](#Insatll)
+- [Usage](#Usage)
+
+## what is filecoin storagehelper
+
+- Why do we need storage assistants ?
+
+Because currently filecoin does not support files larger than sector size to place storage orders, we design storage assistant to help users cut large files into smaller files and realize the storage requirements of files larger than sector size. In addition, filecoin does not support directory storage, we also implemented the directory storage function, the files in the directory are stored separately to achieve this function.
+
+-  What is metadata ?
+
+Metadata: metadata is used for data retrieval. For example, if the user stores a directory, the metadata information records which files are in the directory (cid of the file); So we think that users have to pay for metadata, that is, they also have to store metadata.
+
+## Insatll
+
+```shell
+# cd {project}
+
+# make all
+```
+
+
+
+## Usage
+
+To see a full list of commands, run `storagehelper --help`.
+
+expample:
+
+- import file:
+
+```shell
+# storagehelper import  <filepath> 
+```
