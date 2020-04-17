@@ -40,8 +40,51 @@ To see a full list of commands, run `storagehelper --help`.
 
 expample:
 
-- import file:
+- 1 help
+storagehelper --help
 
-```shell
-# storagehelper import  <filepath> 
+- 2 import and get final cid： storagehelper impot
 ```
+need： 
+<file>：   file or dir
+option：
+<vers> :   lotus/fil   default lotus
+<size>:    block sizae
+<pwd>：  if enc
+```
+
+- 3 storagehelper deal
+```
+need：
+<cid> :      file cid
+<duration>:	 storage duration
+option：
+<vers>：  lotus/fil   default lotus
+<miner>:  minner id
+<askid>： used when vers=fil
+<price>:  used when vers=lotus
+```
+
+- 4 check state
+```
+storagehelper state
+need：
+<cid>： 订单id
+option：
+<vers>：  lotus/fil   default lotus
+```
+
+- 5 retrive
+```
+storagehelper retrive
+need：
+<cid>:  file cid
+<targetpath>:  
+option：
+<vers>:  lotus/fil 
+<miner>: miner id
+```
+
+## Document
+[document](/doc/Readme.md)
+
