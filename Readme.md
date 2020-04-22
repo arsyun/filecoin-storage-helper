@@ -11,7 +11,7 @@
 ## Table of Contents
 
 - [What is Filecoin StorageHelper](#what is filecoin storagehelper)
-- [Install](#Insatll)
+- [Install](#Install)
 - [Usage](#Usage)
 
 ## what is filecoin storagehelper
@@ -24,7 +24,7 @@ Because currently filecoin does not support files larger than sector size to pla
 
 Metadata: metadata is used for data retrieval. For example, if the user stores a directory, the metadata information records which files are in the directory (cid of the file); So we think that users have to pay for metadata, that is, they also have to store metadata.
 
-## Insatll
+## Install
 
 ```shell
 # cd {project}
@@ -88,3 +88,6 @@ option：
 ## Document
 [document](/doc/Readme.md)
 
+## License
+
+Dual-licensed under [MIT](https://github.com/arsyun/filecoin-storage-helper/blob/master/LICENSE-MIT) + [Apache 2.0](https://github.com/arsyun/filecoin-storage-helper/blob/master/LICENSE-APACHE)
